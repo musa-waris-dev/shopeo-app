@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# After successful setup visit to this url: http://localhost:3000/avo/resources/products

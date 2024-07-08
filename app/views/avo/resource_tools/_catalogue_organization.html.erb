@@ -1,0 +1,16 @@
+<%= render Avo::PanelComponent.new() do |c| %>
+    <% c.with_body do %>
+      <%= nested_form_for @record, url: resources_products_path, local: true do |f| %>
+        <%= f.fields_for :catalogue_organization_attributes, @catalogue_organization do |catalogue_form| %>
+          <%= catalogue_form.label :product_tag %>
+          <% if @record.catalogue_organization %>
+            <% @record.catalogue_organization.product_tags.each do |tag| %>
+              <span><%= tag %></span>
+            <% end %>
+          <% end %>
+          <%= text_field_tag :product_tag, nil, name: nil %>
+          <%= catalogue_form.hidden_field :product_tags %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>

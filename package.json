@@ -1,0 +1,28 @@
+{
+  "name": "shopeoapp",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "avo:tailwindcss": "tailwindcss -i ./app/assets/stylesheets/avo/avo.tailwind.css -o ./app/assets/builds/avo.tailwind.css -c ./config/avo/tailwind.config.js --minify"
+  },
+  "keywords": [
+
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.23.0",
+    "postcss": "^8.4.39",
+    "postcss-cli": "^11.0.0"
+  },
+  "dependencies": {
+    "@hotwired/turbo-rails": "^8.0.4"
+  }
+}

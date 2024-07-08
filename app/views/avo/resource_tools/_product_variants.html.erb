@@ -1,0 +1,24 @@
+<%= render Avo::PanelComponent.new() do |c| %>
+  <% c.with_body do %>
+    <%#= link_to_add_options_layout(t('avo.variant.add_option')) %>
+  <% end %>
+<% end %>
+<%= nested_form_for @record, url: resources_products_url(@record.id) do |f| %>
+  <%= f.fields_for :variants, Variant.new do |form| %>
+    <%= form.hidden_field :_destroy %>
+      <%= form.hidden_field :options, class:'variant_options', data: { variant_list_section_target: 'options' } %>
+      <%= form.hidden_field :title %>
+      <%= form.hidden_field :id %>
+      <%= form.hidden_field :archived %>
+      <%= link_to form.object.title, '' %>
+      <%= t('avo.variant.price') %>
+      <%= form.number_field :price, step: 0.1 %>
+      <%= t('avo.variant.available') %>
+      <%= form.number_field :available, step: 1 %>
+      <%= t('avo.variant.sku') %>
+      <%= form.text_field :sku %><br>
+      <%= t('avo.variant.barcode') %>
+      <%= form.text_field :barcode, class: "w-32 py-1 rounded-lg undo-input border variant_barcode mt-2", data: { action: "variant-list-section#variantLineItemHandler" } %>
+  <% end %>
+  <%#= f.link_to_add t('avo.variant.add_option'), :variants, class:"new_variant ml-4 hidden" %>
+<% end %>
